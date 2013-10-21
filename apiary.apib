@@ -1,0 +1,70 @@
+HOST: http://www.google.com/
+
+--- fotofiddle ---
+
+---
+FotoFiddle API spec / documentation
+---
+
+--
+foto resources
+--
+
+List fotos available for this user
+GET /fotos
+< 200
+< Content-Type: application/json
+{ 
+    "fotos":    [
+        { 
+            "image_url": "img.jpg", 
+            "title":"Image Name", 
+            "meta": 1, 
+            "tags": [
+                1
+            ], 
+            "timestamp": 10000000001 
+        }
+    ],
+    "meta": [
+        {
+            "id": 1,
+            "gps": "0,0"
+        }
+    ],
+    "tags": [
+        {
+            "title": "Tag Name",
+            "x": 0,
+            "y": 0
+            "type": "tag"
+        }
+    ]
+}
+
+Add new foto
+POST /fotos
+> Content-Type: application/json
+{ 
+    "title":"2ZY48XPZ"
+}
+< 201
+< Content-Type: application/json
+{
+    "fotos": [
+        {
+            "image_url": "img.jpg", 
+            "title":"Image Name", 
+            "meta": 1, 
+            "timestamp": 10000000001 
+        }
+    ]
+}
+
+-- Payment Resources --
+
+This resource allows you to submit payment information to process your *shopping cart* items
+POST /payment
+{ "cc": "12345678900", "cvc": "123", "expiry": "0112" }
+< 200
+{ "receipt": "/payment/receipt/1" }
