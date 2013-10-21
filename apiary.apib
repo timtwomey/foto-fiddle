@@ -1,6 +1,6 @@
 HOST: http://www.google.com/
 
---- fotofiddle ---
+--- FotoFiddle ---
 
 ---
 FotoFiddle API spec / documentation
@@ -135,10 +135,12 @@ PUT /fotos/:id
     }
 }
 
--- Edit --
-
-This resource allows you to submit payment information to process your *shopping cart* items
-POST /payment
-{ "cc": "12345678900", "cvc": "123", "expiry": "0112" }
+Delete a photo
+DELETE /fotos/:id
 < 200
-{ "receipt": "/payment/receipt/1" }
+< Content-type: application/json
+{
+    "meta": {
+        "message": "ok"
+    }
+}
