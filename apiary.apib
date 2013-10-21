@@ -17,6 +17,7 @@ GET /fotos
 { 
     "fotos":    [
         { 
+            "id": 1,
             "image_url": "img.jpg", 
             "title":"Image Name", 
             "meta": 1, 
@@ -53,15 +54,88 @@ POST /fotos
 {
     "fotos": [
         {
+            "id": 1,
             "image_url": "img.jpg", 
             "title":"Image Name", 
             "meta": 1, 
             "timestamp": 10000000001 
         }
+    ],
+    "exif": [
+        {
+            "id": 1,
+            "gps": "0,0"
+        }
     ]
 }
 
--- Payment Resources --
+Fetch one foto
+GET /fotos/:id
+< 200
+< Content-type: application/json
+{
+    "fotos": [
+        {
+            "id": 1,
+            "image_url": "img.jpg", 
+            "title":"Image Name", 
+            "meta": 1, 
+            "timestamp": 10000000001 
+        }
+    ],
+    "exif": [
+        {
+            "id": 1,
+            "gps": "0,0"
+        }
+    ],
+    "tags": [
+        {
+            "title": "Tag Name",
+            "x": 0,
+            "y": 0
+            "type": "tag"
+        }
+    ]
+}
+
+Update a foto
+PUT /fotos/:id
+> Content-type: application/json
+{
+    "fotos": [
+        {
+            "id": 1,
+            "image_url": "img.jpg", 
+            "title":"Image Name", 
+            "meta": 1, 
+            "timestamp": 10000000001 
+        }
+    ],
+    "exif": [
+        {
+            "id": 1,
+            "gps": "0,0"
+        }
+    ],
+    "tags": [
+        {
+            "title": "Tag Name",
+            "x": 0,
+            "y": 0
+            "type": "tag"
+        }
+    ]
+}
+< 200 
+< Content-type: application/json
+{
+    "meta": {
+        "message": "ok"       
+    }
+}
+
+-- Edit --
 
 This resource allows you to submit payment information to process your *shopping cart* items
 POST /payment
